@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">i-RateRestaurantApp</string>
+    <string name="restaurant_name">Restaurant name</string>
+    <string name="restaurant_type">Restaurant type</string>
+    <string name="date_and_time_of_visit">Date and time of visit</string>
+    <string name="average_meal_price_per_person">Average meal price per person</string>
+    <string name="service_rating">Service rating</string>
+    <string name="cleanliness_rating">Cleanliness rating</string>
+    <string name="food_quality_rating">Food quality rating</string>
+    <string name="notes">Notes</string>
+    <string name="name_of_the_reporter">Name of the reporter</string>
+    <string name="add">Add</string>
+    <string name="rating_list">Rating List</string>
+    <string name="update">Update</string>
+    <string name="pick_date_and_time">dd/mm/yyyy —:—</string>
+</resources>
