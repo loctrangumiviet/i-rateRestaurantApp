@@ -13,4 +13,14 @@
     <string name="rating_list">Rating List</string>
     <string name="update">Update</string>
     <string name="pick_date_and_time">dd/mm/yyyy —:—</string>
+    <string name="search_here">Search Here</string>
+    <string name="search">Search</string>
+    <string name="restaurant_name_title">Restaurant Name:</string>
+    <string name="reporter_name">Reporter Name:</string>
+    <string name="notes_title">Notes :</string>
+    <string name="restaurant_type_title">Restaurant Type : </string>
+    <string name="date_time_visit">Date Time Visit :</string>
+    <string name="service_rating_title">Service Rating :</string>
+    <string name="cleanliness_rating_title">Cleanliness Rating :</string>
+    <string name="foodquality_rating">FoodQuality Rating :</string>
 </resources>

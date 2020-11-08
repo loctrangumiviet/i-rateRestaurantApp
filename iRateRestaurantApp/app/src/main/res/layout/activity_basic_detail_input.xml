@@ -17,7 +17,7 @@
             android:hint="@string/restaurant_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvRestaurantName"
+                android:id="@+id/edtRestaurantName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -30,20 +30,7 @@
             android:hint="@string/restaurant_type"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvRestaurantType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="@string/date_and_time_of_visit"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvDateVisit"
+                android:id="@+id/edtRestaurantType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -57,6 +44,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvPickDateAndTime"
                 android:layout_width="match_parent"
+                android:clickable="false"
+                android:focusable="false"
                 android:text="@string/pick_date_and_time"
                 android:layout_height="wrap_content"
                 />
@@ -69,7 +58,7 @@
             android:hint="@string/average_meal_price_per_person"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvAveragePrice"
+                android:id="@+id/edtAveragePrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -82,7 +71,7 @@
             android:hint="@string/service_rating"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
             <AutoCompleteTextView
-                android:id="@+id/tvServiceRating"
+                android:id="@+id/spServiceRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -96,7 +85,7 @@
             android:hint="@string/cleanliness_rating"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
             <AutoCompleteTextView
-                android:id="@+id/tvCleanlinessRating"
+                android:id="@+id/spCleanlinessRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -110,7 +99,7 @@
             android:hint="@string/food_quality_rating"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
             <AutoCompleteTextView
-                android:id="@+id/tvFoodQualityRating"
+                android:id="@+id/spFoodQualityRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -124,7 +113,7 @@
             android:hint="@string/notes"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvNotes"
+                android:id="@+id/edtNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -137,7 +126,7 @@
             android:hint="@string/name_of_the_reporter"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvReporterName"
+                android:id="@+id/edtReporterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
