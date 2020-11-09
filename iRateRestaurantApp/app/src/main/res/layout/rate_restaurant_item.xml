@@ -3,16 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:translationZ="10dp"
+    android:layout_marginVertical="15dp"
+    android:layout_marginHorizontal="7dp"
     android:elevation="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp">
 
     <LinearLayout
+        android:background="@drawable/back_ground_item"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -20,18 +23,20 @@
             <TextView
                 android:id="@+id/tvTitleResName"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:text="@string/restaurant_name_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvResName"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -39,18 +44,20 @@
             <TextView
                 android:id="@+id/tvTitleResType"
                 android:textSize="20sp"
-                android:text="@string/restaurant_name_title"
+                android:textColor="@color/white"
+                android:text="@string/restaurant_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvResType"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -58,18 +65,20 @@
             <TextView
                 android:id="@+id/tvTitleResDate"
                 android:textSize="20sp"
-                android:text="@string/restaurant_type_title"
+                android:textColor="@color/white"
+                android:text="@string/date_time_visit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvResDate"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -77,12 +86,14 @@
             <TextView
                 android:id="@+id/tvTitleResAverage"
                 android:textSize="20sp"
-                android:text="@string/date_time_visit"
+                android:textColor="@color/white"
+                android:text="@string/average_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvResAverage"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -96,18 +107,20 @@
             <TextView
                 android:id="@+id/tvTitleServiceRating"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:text="@string/service_rating_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvServiceRating"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -115,6 +128,7 @@
             <TextView
                 android:id="@+id/tvCleanlinessRatingTitle"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:text="@string/cleanliness_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -122,11 +136,12 @@
             <TextView
                 android:id="@+id/tvCleanlinessRating"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -135,17 +150,19 @@
                 android:id="@+id/tvTitleFoodQualityRating"
                 android:textSize="20sp"
                 android:text="@string/foodquality_rating"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvFoodQualityRating"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -153,6 +170,7 @@
             <TextView
                 android:id="@+id/tvTitleNotes"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:text="@string/notes_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -160,11 +178,12 @@
             <TextView
                 android:id="@+id/tvNotes"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -173,11 +192,13 @@
                 android:id="@+id/tvTitleReporterName"
                 android:textSize="20sp"
                 android:text="@string/reporter_name"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tvReporterName"
+                android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

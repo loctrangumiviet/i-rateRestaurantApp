@@ -1,19 +1,24 @@
 package com.example.i_raterestaurantapp.ui.basic_detail_input;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.i_raterestaurantapp.R;
 import com.example.i_raterestaurantapp.data.local.database.AppDatabase;
+import com.example.i_raterestaurantapp.data.model.RatingModel;
+import com.example.i_raterestaurantapp.ui.rating_restaurant.RatingRestaurantActivity;
+import com.example.i_raterestaurantapp.utils.Contants;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -21,17 +26,119 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class BasicDetailInputActivity extends AppCompatActivity {
-    TextInputEditText edtRestaurantName, edtRestaurantType,edtPickDateAndTime,edtAveragePrice,edtNotes,edtReporterName;
-    AutoCompleteTextView tvServiceRating,tvCleanlinessRating,tvFoodQualityRating;
-    Button btnAdd,btnShow,btnUpdate;
+    TextInputEditText edtRestaurantName, edtRestaurantType, edtPickDateAndTime, edtAveragePrice, edtNotes, edtReporterName;
+    AutoCompleteTextView tvServiceRating, tvCleanlinessRating, tvFoodQualityRating;
+    Button btnAdd, btnShow, btnUpdate;
+    LinearLayout addLayout,updateLayout;
     AppDatabase mDB;
+    int rateID = -1;
+    String[] RatingList = new String[]{"Need to improve", "OKAY", "Good", "Excellent"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_detail_input);
         init();
+        setupIntent();
         setUpUI();
+        setupEventClick();
+    }
+
+    private void setupIntent() {
+        Intent intent = getIntent();
+        rateID =  intent.getIntExtra(Contants.RATE,-1);
+        if(rateID != -1) {
+            RatingModel getRate = mDB.ratingDAO().getRating(rateID);
+            rateID = getRate.getId();
+            edtRestaurantName.setText(getRate.getRestaurantName());
+            edtRestaurantType.setText(getRate.getRestaurantType());
+            edtPickDateAndTime.setText(getRate.getDateVisit());
+            edtAveragePrice.setText(getRate.getAveragePrice());
+            tvServiceRating.setText(getRate.getServiceRating());
+            tvFoodQualityRating.setText(getRate.getFoodQualityRating());
+            tvCleanlinessRating.setText(getRate.getCleanlinessRating());
+            edtNotes.setText(getRate.getNotes());
+            edtReporterName.setText(getRate.getReporterName());
+            addLayout.setVisibility(View.GONE);
+            updateLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void clearField(){
+        edtRestaurantName.setText(getString(R.string.empty_string));
+        edtRestaurantType.setText(getString(R.string.empty_string));
+        edtPickDateAndTime.setText(getString(R.string.pick_date_and_time));
+        edtAveragePrice.setText(getString(R.string.empty_string));
+        tvServiceRating.setText(getString(R.string.empty_string));
+        tvFoodQualityRating.setText(getString(R.string.empty_string));
+        tvCleanlinessRating.setText(getString(R.string.empty_string));
+        edtNotes.setText(getString(R.string.empty_string));
+        edtReporterName.setText(getString(R.string.empty_string));
+    }
+
+    private void setupEventClick() {
+        //add rating
+        btnAdd.setOnClickListener(view -> {
+            String resName = edtRestaurantName.getText().toString();
+            String resType = edtRestaurantType.getText().toString();
+            String resTime = edtPickDateAndTime.getText().toString();
+            String averagePrice = edtAveragePrice.getText().toString();
+            String serviceRating = tvServiceRating.getText().toString();
+            String foodQualityRating = tvFoodQualityRating.getText().toString();
+            String cleanlinessRating = tvCleanlinessRating.getText().toString();
+            String notes = edtNotes.getText().toString();
+            String reporterName = edtReporterName.getText().toString();
+            //field empty -> show message
+            if (resName.isEmpty() || resType.isEmpty() || resTime.isEmpty() || averagePrice.isEmpty()
+                    || serviceRating.isEmpty() || foodQualityRating.isEmpty() || cleanlinessRating.isEmpty()
+                    || notes.isEmpty() || reporterName.isEmpty() || resTime.equals(getString(R.string.pick_date_and_time))) {
+                Toast.makeText(this, getString(R.string.warrning), Toast.LENGTH_LONG).show();
+            }
+            //
+            else {
+                //create object
+                RatingModel rate = new RatingModel(resName, resType, resTime, averagePrice, serviceRating, cleanlinessRating, foodQualityRating, notes, reporterName);
+                //add object to database
+                mDB.ratingDAO().insertRate(rate);
+                //show message complete
+                Toast.makeText(this, getString(R.string.message_complete), Toast.LENGTH_LONG).show();
+                clearField();
+            }
+        });
+
+        //show list
+        btnShow.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RatingRestaurantActivity.class);
+            // change to  screen rating list
+            startActivity(intent);
+        });
+
+        //update rate
+        btnUpdate.setOnClickListener(view ->{
+            //get rate data form id
+            RatingModel rateUpdate = mDB.ratingDAO().getRating(rateID);
+            //update data from input
+            rateUpdate.setRestaurantName(edtRestaurantName.getText().toString());
+            rateUpdate.setRestaurantType(edtRestaurantType.getText().toString());
+            rateUpdate.setDateVisit(edtPickDateAndTime.getText().toString());
+            rateUpdate.setAveragePrice(edtAveragePrice.getText().toString());
+            rateUpdate.setServiceRating(tvServiceRating.getText().toString());
+            rateUpdate.setFoodQualityRating(tvFoodQualityRating.getText().toString());
+            rateUpdate.setCleanlinessRating(tvCleanlinessRating.getText().toString());
+            rateUpdate.setNotes(edtNotes.getText().toString());
+            rateUpdate.setReporterName(edtReporterName.getText().toString());
+
+            //update rate on database
+            mDB.ratingDAO().updateRate(rateUpdate);
+            Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this,RatingRestaurantActivity.class);
+            //set visible UI
+            addLayout.setVisibility(View.VISIBLE);
+            updateLayout.setVisibility(View.GONE);
+            //change activity
+            startActivity(intent);
+        });
     }
 
     private void setUpUI() {
@@ -39,9 +146,14 @@ public class BasicDetailInputActivity extends AppCompatActivity {
         edtPickDateAndTime.setOnClickListener(view -> {
             pickDateAndTime(edtPickDateAndTime);
         });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, RatingList);
+        tvServiceRating.setAdapter(adapter);
+        tvCleanlinessRating.setAdapter(adapter);
+        tvFoodQualityRating.setAdapter(adapter);
     }
 
-    public void init(){
+    public void init() {
         mDB = AppDatabase.BuilderDatabase(this);
         edtRestaurantName = findViewById(R.id.edtRestaurantName);
         edtRestaurantType = findViewById(R.id.edtRestaurantType);
@@ -55,6 +167,8 @@ public class BasicDetailInputActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnShow = findViewById(R.id.btnShow);
         btnUpdate = findViewById(R.id.btnUpdate);
+        addLayout = findViewById(R.id.addLayout);
+        updateLayout = findViewById(R.id.updateLayout);
 
     }
 

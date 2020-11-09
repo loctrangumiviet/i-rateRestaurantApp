@@ -7,6 +7,7 @@ import androidx.room.Update;
 
 import com.example.i_raterestaurantapp.data.model.RatingModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
@@ -15,14 +16,20 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 public interface RatingDAO {
 
     @Insert(onConflict = REPLACE)
-    void insertBook(RatingModel rating);
+    void insertRate(RatingModel rating);
 
     @Update(onConflict = REPLACE)
-    void updateBook(RatingModel rating);
+    void updateRate(RatingModel rating);
 
-    @Query("DELETE FROM Rating")
-    void deleteAll();
+    @Query("SELECT * FROM Rating Where id = :id")
+    RatingModel getRating(int id);
+
+    @Query("DELETE FROM Rating Where id = :id")
+    void deleteRate(int id);
+
+    @Query("SELECT * FROM Rating WHERE (restaurantName LIKE :keyWord OR restaurantType LIKE :keyWord)")
+    List<RatingModel> searchRate(String keyWord);
 
     @Query("SELECT * FROM Rating")
-    public List<RatingModel> findAllBookSync();
+    List<RatingModel> findAllRateSync();
 }

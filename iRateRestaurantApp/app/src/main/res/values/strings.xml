@@ -23,4 +23,13 @@
     <string name="service_rating_title">Service Rating :</string>
     <string name="cleanliness_rating_title">Cleanliness Rating :</string>
     <string name="foodquality_rating">FoodQuality Rating :</string>
+    <string name="warrning">Please type enough field !!</string>
+    <string name="message_complete">Add Successfully !</string>
+    <string name="average_price">Average price:</string>
+    <string name="option">Option</string>
+    <string name="delete">Delete</string>
+    <string name="update_item">Update</string>
+    <string name="empty_string" />
+    <string name="message_delete_success">Delete Successfully !</string>
+    <string name="update_success">Update Successfully !</string>
 </resources>

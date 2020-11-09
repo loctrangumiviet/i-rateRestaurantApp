@@ -3,21 +3,23 @@ package com.example.i_raterestaurantapp.data.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Rating")
-public class RatingModel {
+public class RatingModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String restaurantName;
     private String restaurantType;
     private String dateVisit;
-    private Long averagePrice;
+    private String averagePrice;
     private String serviceRating;
     private String cleanlinessRating;
     private String foodQualityRating;
     private String notes;
     private String reporterName;
 
-    public RatingModel(String restaurantName, String restaurantType, String dateVisit, Long averagePrice, String serviceRating, String cleanlinessRating, String foodQualityRating, String notes, String reporterName) {
+    public RatingModel(String restaurantName, String restaurantType, String dateVisit, String averagePrice, String serviceRating, String cleanlinessRating, String foodQualityRating, String notes, String reporterName) {
         this.id = 0;
         this.restaurantName = restaurantName;
         this.restaurantType = restaurantType;
@@ -30,11 +32,11 @@ public class RatingModel {
         this.reporterName = reporterName;
     }
 
-    public Long getAveragePrice() {
+    public String getAveragePrice() {
         return averagePrice;
     }
 
-    public void setAveragePrice(Long averagePrice) {
+    public void setAveragePrice(String averagePrice) {
         this.averagePrice = averagePrice;
     }
 
