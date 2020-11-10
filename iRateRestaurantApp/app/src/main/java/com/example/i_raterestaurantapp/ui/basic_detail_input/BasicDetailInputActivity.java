@@ -92,7 +92,7 @@ public class BasicDetailInputActivity extends AppCompatActivity {
             //field empty -> show message
             if (resName.isEmpty() || resType.isEmpty() || resTime.isEmpty() || averagePrice.isEmpty()
                     || serviceRating.isEmpty() || foodQualityRating.isEmpty() || cleanlinessRating.isEmpty()
-                    || notes.isEmpty() || reporterName.isEmpty() || resTime.equals(getString(R.string.pick_date_and_time))) {
+                    || reporterName.isEmpty() || resTime.equals(getString(R.string.pick_date_and_time))) {
                 Toast.makeText(this, getString(R.string.warrning), Toast.LENGTH_LONG).show();
             }
             //
@@ -116,28 +116,45 @@ public class BasicDetailInputActivity extends AppCompatActivity {
 
         //update rate
         btnUpdate.setOnClickListener(view ->{
-            //get rate data form id
-            RatingModel rateUpdate = mDB.ratingDAO().getRating(rateID);
-            //update data from input
-            rateUpdate.setRestaurantName(edtRestaurantName.getText().toString());
-            rateUpdate.setRestaurantType(edtRestaurantType.getText().toString());
-            rateUpdate.setDateVisit(edtPickDateAndTime.getText().toString());
-            rateUpdate.setAveragePrice(edtAveragePrice.getText().toString());
-            rateUpdate.setServiceRating(tvServiceRating.getText().toString());
-            rateUpdate.setFoodQualityRating(tvFoodQualityRating.getText().toString());
-            rateUpdate.setCleanlinessRating(tvCleanlinessRating.getText().toString());
-            rateUpdate.setNotes(edtNotes.getText().toString());
-            rateUpdate.setReporterName(edtReporterName.getText().toString());
+            String resName = edtRestaurantName.getText().toString();
+            String resType = edtRestaurantType.getText().toString();
+            String resTime = edtPickDateAndTime.getText().toString();
+            String averagePrice = edtAveragePrice.getText().toString();
+            String serviceRating = tvServiceRating.getText().toString();
+            String foodQualityRating = tvFoodQualityRating.getText().toString();
+            String cleanlinessRating = tvCleanlinessRating.getText().toString();
+            String notes = edtNotes.getText().toString();
+            String reporterName = edtReporterName.getText().toString();
+            //field empty -> show message
+            if (resName.isEmpty() || resType.isEmpty() || resTime.isEmpty() || averagePrice.isEmpty()
+                    || serviceRating.isEmpty() || foodQualityRating.isEmpty() || cleanlinessRating.isEmpty()
+                    || reporterName.isEmpty() || resTime.equals(getString(R.string.pick_date_and_time))) {
+                Toast.makeText(this, getString(R.string.warrning), Toast.LENGTH_LONG).show();
+            }
+            else {
+                //get rate data form id
+                RatingModel rateUpdate = mDB.ratingDAO().getRating(rateID);
+                //update data from input
+                rateUpdate.setRestaurantName(resName);
+                rateUpdate.setRestaurantType(resType);
+                rateUpdate.setDateVisit(resTime);
+                rateUpdate.setAveragePrice(averagePrice);
+                rateUpdate.setServiceRating(serviceRating);
+                rateUpdate.setFoodQualityRating(foodQualityRating);
+                rateUpdate.setCleanlinessRating(cleanlinessRating);
+                rateUpdate.setNotes(notes);
+                rateUpdate.setReporterName(reporterName);
 
-            //update rate on database
-            mDB.ratingDAO().updateRate(rateUpdate);
-            Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this,RatingRestaurantActivity.class);
-            //set visible UI
-            addLayout.setVisibility(View.VISIBLE);
-            updateLayout.setVisibility(View.GONE);
-            //change activity
-            startActivity(intent);
+                //update rate on database
+                mDB.ratingDAO().updateRate(rateUpdate);
+                Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, RatingRestaurantActivity.class);
+                //set visible UI
+                addLayout.setVisibility(View.VISIBLE);
+                updateLayout.setVisibility(View.GONE);
+                //change activity
+                startActivity(intent);
+            }
         });
     }
 

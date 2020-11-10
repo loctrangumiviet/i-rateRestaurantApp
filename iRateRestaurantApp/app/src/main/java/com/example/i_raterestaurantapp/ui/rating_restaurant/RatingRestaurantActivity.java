@@ -2,6 +2,7 @@ package com.example.i_raterestaurantapp.ui.rating_restaurant;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.i_raterestaurantapp.R;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 public class RatingRestaurantActivity extends AppCompatActivity implements AdapterRating.OnClickListener {
     TextInputEditText tvSearch;
     Button btnSearch;
+    ImageView btnBack;
     RecyclerView rcvRate;
     ArrayList<RatingModel> listRate;
     AdapterRating adapterRating;
@@ -42,6 +45,7 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
     }
 
     private void mOnClick() {
+        //search event
         btnSearch.setOnClickListener(view ->{
             String keySearch = tvSearch.getText().toString();
             if(keySearch.isEmpty()){
@@ -55,9 +59,19 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
             //update list on UI
             adapterRating.setList(listRate);
         });
+
+        //back event
+        btnBack.setOnClickListener(view -> {
+            //close current activity
+            finish();
+        });
     }
 
     private void setupView() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //get all rate list from database
         listRate = (ArrayList<RatingModel>) mDB.ratingDAO().findAllRateSync();
         //create Adapter
@@ -78,6 +92,7 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
         tvSearch = findViewById(R.id.tvSearch);
         btnSearch = findViewById(R.id.btnSearch);
         rcvRate = findViewById(R.id.rcvRate);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     //onclick each item on recyclerview
