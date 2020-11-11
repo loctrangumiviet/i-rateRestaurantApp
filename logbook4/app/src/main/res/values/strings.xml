@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">i-RateApp</string>
+    <string name="app_name">LogBook 4</string>
     <string name="restaurant_name">Restaurant name</string>
     <string name="restaurant_type">Restaurant type</string>
     <string name="date_and_time_of_visit">Date and time of visit</string>

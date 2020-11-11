@@ -1,4 +1,4 @@
-package com.example.i_rateapp;
+package com.example.logbook4;
 
 import org.junit.Test;
 
