@@ -154,6 +154,7 @@ public class BasicDetailInputActivity extends AppCompatActivity {
                 updateLayout.setVisibility(View.GONE);
                 //change activity
                 startActivity(intent);
+                finish();
             }
         });
     }
