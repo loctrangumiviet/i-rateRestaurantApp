@@ -8,35 +8,37 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:background="@drawable/back_ground_item"
+        android:background="@color/pink"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize" />
     <LinearLayout
         android:id="@+id/addLayout"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/pink2"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="50dp"
         android:gravity="center">
         <Button
             android:id="@+id/btnUpdateItem"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_width="150dp"
+            android:textSize="22sp"
             android:layout_height="wrap_content"
             android:text="@string/update_item"
             android:textAllCaps="false"
-            style="?attr/materialButtonOutlinedStyle"
             android:layout_marginHorizontal="20dp"
             />
 
         <Button
             android:id="@+id/btnDeleteItem"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textColor="@color/white"
             android:text="@string/delete"
             android:layout_marginHorizontal="20dp"
-            style="?attr/materialButtonOutlinedStyle"
             />
     </LinearLayout>
 </LinearLayout>

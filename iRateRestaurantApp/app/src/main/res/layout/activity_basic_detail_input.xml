@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ui.basic_detail_input.BasicDetailInputActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="15dp"
+            android:background="@color/pink3"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/back_ground_item"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </androidx.appcompat.widget.Toolbar>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,67 +28,63 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtRestaurantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radius_editext"
+                android:drawableStart="@drawable/name"
+                android:drawablePadding="20dp"
+                android:hint="@string/restaurant_name"
+                android:padding="14dp"
+                android:translationZ="10dp" />
+
+            <EditText
+                android:id="@+id/edtRestaurantType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/restaurant_name">
+                android:drawableStart="@drawable/type"
+                android:drawablePadding="20dp"
+                android:background="@drawable/radius_editext"
+                android:hint="@string/restaurant_type"
+                android:padding="14dp"
+                android:translationZ="10dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtRestaurantName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/tvPickDateAndTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/restaurant_type">
+                android:drawableStart="@drawable/date"
+                android:drawablePadding="20dp"
+                android:background="@drawable/radius_editext"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/pick_date_and_time"
+                android:padding="14dp"
+                android:translationZ="10dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtRestaurantType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tvPickDateAndTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:text="@string/pick_date_and_time" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtAveragePrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/average_meal_price_per_person">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtAveragePrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:drawableStart="@drawable/average"
+                android:drawablePadding="20dp"
+                android:background="@drawable/radius_editext"
+                android:hint="@string/average_meal_price_per_person"
+                android:inputType="number"
+                android:padding="14dp"
+                android:translationZ="10dp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/service_rating">
+                android:hint="@string/service_rating"
+                android:translationZ="10dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/spServiceRating"
@@ -98,11 +94,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/cleanliness_rating">
+                android:hint="@string/cleanliness_rating"
+                android:translationZ="10dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/spCleanlinessRating"
@@ -112,11 +109,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/food_quality_rating">
+                android:hint="@string/food_quality_rating"
+                android:translationZ="10dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/spFoodQualityRating"
@@ -125,56 +123,67 @@
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/notes">
+                android:drawableStart="@drawable/note"
+                android:drawablePadding="20dp"
+                android:background="@drawable/radius_editext"
+                android:hint="@string/notes"
+                android:inputType="number"
+                android:padding="14dp"
+                android:translationZ="10dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtReporterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/name_of_the_reporter">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtReporterName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:drawableStart="@drawable/reporter"
+                android:drawablePadding="20dp"
+                android:background="@drawable/radius_editext"
+                android:hint="@string/name_of_the_reporter"
+                android:inputType="number"
+                android:padding="14dp"
+                android:translationZ="10dp" />
 
             <LinearLayout
                 android:id="@+id/addLayout"
                 android:layout_width="match_parent"
+                android:drawableStart="@drawable/name"
+                android:drawablePadding="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:weightSum="10">
 
                 <Button
                     android:id="@+id/btnAdd"
-                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="5"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/pink3"
                     android:text="@string/add"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:translationZ="10dp" />
 
                 <Button
                     android:id="@+id/btnShow"
-                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="5"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/pink3"
                     android:text="@string/rating_list"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:translationZ="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -187,13 +196,15 @@
 
                 <Button
                     android:id="@+id/btnUpdate"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/pink3"
                     android:paddingHorizontal="50dp"
+                    android:textSize="22sp"
                     android:text="@string/update"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:translationZ="10dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

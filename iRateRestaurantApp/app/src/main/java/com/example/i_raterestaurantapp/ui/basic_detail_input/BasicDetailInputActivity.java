@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class BasicDetailInputActivity extends AppCompatActivity {
-    TextInputEditText edtRestaurantName, edtRestaurantType, edtPickDateAndTime, edtAveragePrice, edtNotes, edtReporterName;
+    EditText edtRestaurantName, edtRestaurantType, edtPickDateAndTime, edtAveragePrice, edtNotes, edtReporterName;
     AutoCompleteTextView tvServiceRating, tvCleanlinessRating, tvFoodQualityRating;
     Button btnAdd, btnShow, btnUpdate;
     LinearLayout addLayout,updateLayout;

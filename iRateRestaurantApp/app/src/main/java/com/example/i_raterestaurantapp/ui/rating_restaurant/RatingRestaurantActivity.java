@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 
 public class RatingRestaurantActivity extends AppCompatActivity implements AdapterRating.OnClickListener {
-    TextInputEditText tvSearch;
+    EditText tvSearch;
     Button btnSearch;
     ImageView btnBack;
     RecyclerView rcvRate;
