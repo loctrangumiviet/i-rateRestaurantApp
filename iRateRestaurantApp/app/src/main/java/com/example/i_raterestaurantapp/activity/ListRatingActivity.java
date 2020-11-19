@@ -1,4 +1,4 @@
-package com.example.i_raterestaurantapp.ui.rating_restaurant;
+package com.example.i_raterestaurantapp.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,51 +17,49 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.i_raterestaurantapp.R;
-import com.example.i_raterestaurantapp.data.local.database.AppDatabase;
-import com.example.i_raterestaurantapp.data.model.RatingModel;
-import com.example.i_raterestaurantapp.ui.basic_detail_input.BasicDetailInputActivity;
-import com.example.i_raterestaurantapp.utils.Contants;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.i_raterestaurantapp.database.AppDatabase;
+import com.example.i_raterestaurantapp.model.Rate;
+import com.example.i_raterestaurantapp.adapter.AdapterRate;
+import com.example.i_raterestaurantapp.utils.GlobalVariables;
 
 import java.util.ArrayList;
 
-public class RatingRestaurantActivity extends AppCompatActivity implements AdapterRating.OnClickListener {
-    EditText tvSearch;
-    Button btnSearch;
-    ImageView btnBack;
-    RecyclerView rcvRate;
-    ArrayList<RatingModel> listRate;
-    AdapterRating adapterRating;
-    AppDatabase mDB;
+public class ListRatingActivity extends AppCompatActivity implements AdapterRate.OnClickListener {
+    ArrayList<Rate> rates;
+    AdapterRate adapter;
+    AppDatabase database;
     Context context;
+    EditText edtSearch;
+    ImageView btnBackScreen,btnSearch;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating_restaurant);
-        init();
+        setContentView(R.layout.activity_rating_list);
+        initView();
         setupView();
-        mOnClick();
+        onClickButton();
     }
 
-    private void mOnClick() {
+    private void onClickButton() {
         //search event
         btnSearch.setOnClickListener(view ->{
-            String keySearch = tvSearch.getText().toString();
+            String keySearch = edtSearch.getText().toString();
             if(keySearch.isEmpty()){
                 //get all list rate on database
-                listRate = (ArrayList<RatingModel>) mDB.ratingDAO().findAllRateSync();
+                rates = (ArrayList<Rate>) database.ratingDAO().findAllRateSync();
             }
             else {
                 //get list rate have RestaurantName or RestaurantType contains keySearch
-                listRate = (ArrayList<RatingModel>) mDB.ratingDAO().searchRate("%" + keySearch + "%");
+                rates = (ArrayList<Rate>) database.ratingDAO().searchRate("%" + keySearch + "%");
             }
             //update list on UI
-            adapterRating.setList(listRate);
+            adapter.setList(rates);
         });
 
         //back event
-        btnBack.setOnClickListener(view -> {
+        btnBackScreen.setOnClickListener(view -> {
             //close current activity
             finish();
         });
@@ -74,33 +71,34 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //get all rate list from database
-        listRate = (ArrayList<RatingModel>) mDB.ratingDAO().findAllRateSync();
+        rates = (ArrayList<Rate>) database.ratingDAO().findAllRateSync();
         //create Adapter
-        adapterRating = new AdapterRating(listRate,this);
+        adapter = new AdapterRate(rates,this);
         //set adapter for recyclerview
-        rcvRate.setAdapter(adapterRating);
+        recyclerView.setAdapter(adapter);
         //set layout
-        rcvRate.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        adapterRating.notifyDataSetChanged();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        adapter.notifyDataSetChanged();
         //this is function onclick line 85
-        adapterRating.setOnclickListener(this);
+        adapter.setOnclickListener(this);
     }
 
-    private void init() {
-        context = this;
-        listRate = new ArrayList<RatingModel>();
-        mDB = AppDatabase.BuilderDatabase(this);
-        tvSearch = findViewById(R.id.tvSearch);
-        btnSearch = findViewById(R.id.btnSearch);
-        rcvRate = findViewById(R.id.rcvRate);
-        btnBack = findViewById(R.id.btnBack);
-    }
 
     //onclick each item on recyclerview
     @Override
-    public void onclick(RatingModel rate) {
+    public void onclick(Rate rate) {
         //show dialog option
         displayAlertDialog(rate.getId());
+    }
+
+    private void initView() {
+        context = this;
+        rates = new ArrayList<Rate>();
+        database = AppDatabase.BuilderDatabase(this);
+        edtSearch = findViewById(R.id.tvSearch);
+        btnSearch = findViewById(R.id.btnSearch);
+        recyclerView = findViewById(R.id.rcvRate);
+        btnBackScreen = findViewById(R.id.btnBackScreen);
     }
 
     public void displayAlertDialog(int rateID) {
@@ -108,8 +106,8 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
         LayoutInflater inflater = getLayoutInflater();
         View alertLayout = inflater.inflate(R.layout.dialog_layout, null,false);
         //init view
-        final  Button btnUpdate = alertLayout.findViewById(R.id.btnUpdateItem);
-        final  Button btnDelete = alertLayout.findViewById(R.id.btnDeleteItem);
+        final  Button btnUpdate = alertLayout.findViewById(R.id.btnUpdateRate);
+        final  Button btnDelete = alertLayout.findViewById(R.id.btnDeleteRate);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //set view for AlertDialog
@@ -119,23 +117,22 @@ public class RatingRestaurantActivity extends AppCompatActivity implements Adapt
 
         btnDelete.setOnClickListener( view -> {
             //delete rate selected
-            mDB.ratingDAO().deleteRate(rateID);
+            database.ratingDAO().deleteRate(rateID);
             Toast.makeText(this, getString(R.string.message_delete_success),Toast.LENGTH_LONG).show();
             //get all list rate
-            listRate = (ArrayList<RatingModel>) mDB.ratingDAO().findAllRateSync();
+            rates = (ArrayList<Rate>) database.ratingDAO().findAllRateSync();
             //update data of recycler view
-            adapterRating.setList(listRate);
+            adapter.setList(rates);
             dialog.dismiss();
         });
 
         btnUpdate.setOnClickListener(view -> {
-            Intent intent = new Intent(this, BasicDetailInputActivity.class);
+            Intent intent = new Intent(this, AddRatingActivity.class);
             //put variable id from this screen to BasicDetailInputActivity screen
-            intent.putExtra(Contants.RATE,rateID);
+            intent.putExtra(GlobalVariables.RATE,rateID);
             //close dialog
             dialog.dismiss();
             startActivity(intent);
-            finish();
         });
     }
 }

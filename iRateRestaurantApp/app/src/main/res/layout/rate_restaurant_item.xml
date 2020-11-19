@@ -7,10 +7,10 @@
     android:layout_marginHorizontal="7dp"
     android:elevation="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
-        android:background="@color/pink4"
+        android:background="@color/Yellow"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

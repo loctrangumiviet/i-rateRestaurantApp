@@ -1,4 +1,4 @@
-package com.example.i_raterestaurantapp.ui.rating_restaurant;
+package com.example.i_raterestaurantapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.i_raterestaurantapp.R;
-import com.example.i_raterestaurantapp.data.model.RatingModel;
+import com.example.i_raterestaurantapp.model.Rate;
 
 import java.util.ArrayList;
 
-public class AdapterRating extends RecyclerView.Adapter<AdapterRating.ViewHolder> {
-    ArrayList<RatingModel> listRate;
+public class AdapterRate extends RecyclerView.Adapter<AdapterRate.ViewHolder> {
+    ArrayList<Rate> listRate;
     Context context;
     OnClickListener onClick;
 
     public interface OnClickListener
     {
-        void onclick(RatingModel rate);
+        void onclick(Rate rate);
     }
 
     //set list in oder to update data of recyclerview
-    public void setList(ArrayList<RatingModel> arrayList){
+    public void setList(ArrayList<Rate> arrayList){
         this.listRate = arrayList;
         notifyDataSetChanged();
     }
@@ -34,7 +34,7 @@ public class AdapterRating extends RecyclerView.Adapter<AdapterRating.ViewHolder
         this.onClick = onClick;
     }
 
-    public AdapterRating(ArrayList<RatingModel> listRate, Context context) {
+    public AdapterRate(ArrayList<Rate> listRate, Context context) {
         this.listRate = listRate;
         this.context = context;
     }
@@ -76,16 +76,16 @@ public class AdapterRating extends RecyclerView.Adapter<AdapterRating.ViewHolder
             tvReporterName = itemView.findViewById(R.id.tvReporterName);
         }
 
-        public void bind(final RatingModel rate){
-            tvResName.setText(rate.getRestaurantName());
-            tvResType.setText(rate.getRestaurantType());
-            tvResDate.setText(rate.getDateVisit());
-            tvResAverage.setText(rate.getAveragePrice());
-            tvServiceRating.setText(rate.getServiceRating());
-            tvCleanlinessRating.setText(rate.getCleanlinessRating());
-            tvFoodQualityRating.setText(rate.getFoodQualityRating());
+        public void bind(final Rate rate){
+            tvResName.setText(rate.getName());
+            tvResType.setText(rate.getType());
+            tvResDate.setText(rate.getDate());
+            tvResAverage.setText(rate.getAverage());
+            tvServiceRating.setText(rate.getService());
+            tvCleanlinessRating.setText(rate.getCleanliness());
+            tvFoodQualityRating.setText(rate.getFoodQuality());
             tvNotes.setText(rate.getNotes());
-            tvReporterName.setText(rate.getReporterName());
+            tvReporterName.setText(rate.getReporter());
             //event onclick when click each item on recyclerview
             itemView.setOnClickListener(v -> {
                 onClick.onclick(rate);

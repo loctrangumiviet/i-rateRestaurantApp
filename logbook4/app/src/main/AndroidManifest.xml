@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IRateApp">
-        <activity android:name="com.example.logbook4.BasicDetailInputActivity">
+        <activity android:name="com.example.logbook4.AddRatingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

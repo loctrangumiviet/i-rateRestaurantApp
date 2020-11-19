@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/GrayDark"
         android:text="@string/option"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:background="@color/pink"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize" />
+        android:textStyle="bold" />
+
     <LinearLayout
         android:id="@+id/addLayout"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:background="@color/pink2"
         android:layout_height="wrap_content"
-        android:padding="50dp"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnUpdateItem"
-            android:textColor="@color/white"
-            android:layout_width="150dp"
-            android:textSize="22sp"
-            android:layout_height="wrap_content"
-            android:text="@string/update_item"
-            android:textAllCaps="false"
-            android:layout_marginHorizontal="20dp"
-            />
+        android:background="@color/Yellow"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="50dp">
 
         <Button
-            android:id="@+id/btnDeleteItem"
-            android:layout_width="150dp"
+            android:id="@+id/btnUpdateRate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/update_item"
+            android:backgroundTint="@color/GrayDark"
             android:textAllCaps="false"
-            android:textSize="22sp"
             android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btnDeleteRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="@string/delete"
-            android:layout_marginHorizontal="20dp"
-            />
+            android:backgroundTint="@color/GrayDark"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
     </LinearLayout>
 </LinearLayout>

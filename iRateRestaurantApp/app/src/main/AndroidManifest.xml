@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoActionBar">
-        <activity android:name=".ui.rating_restaurant.RatingRestaurantActivity" />
-        <activity android:name=".ui.basic_detail_input.BasicDetailInputActivity" >
+        <activity android:name=".activity.ListRatingActivity" />
+        <activity android:name=".activity.AddRatingActivity" >
+        </activity>
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
         </activity>
     </application>
 
