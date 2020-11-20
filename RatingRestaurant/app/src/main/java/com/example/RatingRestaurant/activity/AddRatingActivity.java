@@ -36,7 +36,7 @@ public class AddRatingActivity extends AppCompatActivity {
     EditText edtName, edtType, edtDate, edtAverage, edtNotes, edtReporter;
     AutoCompleteTextView tvService, tvCleanliness, tvFoodQuality;
     int ID = -1;
-    String[] satisfactionList = new String[]{"Improve", "Excellent", "Good", "OKAY"};
+    String[] satisfactionList = new String[]{"Excellent", "Good","OKAY","improve"};
 
 
     @Override
