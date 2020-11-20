@@ -83,6 +83,12 @@ public class ListRatingActivity extends AppCompatActivity implements AdapterRate
         adapter.setOnclickListener(this);
     }
 
+    @Override
+    protected void onResume() {
+        rates = (ArrayList<Rate>) database.ratingDAO().findAllRateSync();
+        adapter.setList(rates);
+        super.onResume();
+    }
 
     //onclick each item on recyclerview
     @Override

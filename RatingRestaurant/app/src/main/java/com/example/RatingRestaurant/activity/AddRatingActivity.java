@@ -36,7 +36,7 @@ public class AddRatingActivity extends AppCompatActivity {
     EditText edtName, edtType, edtDate, edtAverage, edtNotes, edtReporter;
     AutoCompleteTextView tvService, tvCleanliness, tvFoodQuality;
     int ID = -1;
-    String[] satisfactionList = new String[]{"Need to improve", "OKAY", "Good", "Excellent"};
+    String[] satisfactionList = new String[]{"Improve", "Excellent", "Good", "OKAY"};
 
 
     @Override
@@ -46,6 +46,7 @@ public class AddRatingActivity extends AppCompatActivity {
         setupView();
         getDataIntent();
         onClick();
+        setupSpinner();
     }
 
     private void getDataIntent() {
@@ -143,7 +144,6 @@ public class AddRatingActivity extends AppCompatActivity {
                 addLayoutButton.setVisibility(View.VISIBLE);
                 updateLayoutButton.setVisibility(View.GONE);
                 //change activity
-                startActivity(intent);
                 finish();
             }
         });
@@ -178,6 +178,9 @@ public class AddRatingActivity extends AppCompatActivity {
         btnBackScreen = findViewById(R.id.btnBackScreen);
         database = AppDatabase.BuilderDatabase(this);
 
+    }
+
+    private void setupSpinner(){
         // constructor data for combobox
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, satisfactionList);
         tvService.setAdapter(adapter);
